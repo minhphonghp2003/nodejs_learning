@@ -1,20 +1,36 @@
-
-const path = require('path')
-const express = require('express') 
-const morgan = require('morgan') // log info
-const { engine } = require('express-handlebars') // template
+import express from 'express'
+import __dirname from 'path'
+import morgan from 'morgan' //log info
+import 'dotenv/config'
+import url from './route/url.js'
+import mysql from 'mysql2'
 const app = express()
-const port = 8080
+const port = process.env.PORT
+
 app.use(morgan('combined'))
+// ViewEng
+app.set('view engine', 'ejs')
+app.set('views', './src/views')
+app.use(express.static('./src/static/'))
 
-app.engine('hbs', engine({ extname: '.hbs', defaultLayout: "main"}));
-app.set('view engine', 'hbs')
-app.set('views', path.join(__dirname, 'resrc/views'))
+url(app)
 
-app.get('/', (req, res) => {
-  res.render('newhome')
-})
+// database
+
+
+// create the connection to database
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  database: 'nodejs'
+});
+
+// simple query
+
+// with placeholder
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
+// console.log(typeof(connection)
+export {connection}

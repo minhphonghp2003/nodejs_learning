@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>User</title>
+</head>
+<body>
+    
+    <!-- nav bar  -->
+    <ul class="menu cf">
+        <li><a href="#" id="active">Home</a></li>
+        <li>
+                <a href="#">Services</a>
+                <ul class="submenu">
+        <li><a href="#">Web design</a></li>
+        <li><a href="#">Graphics design</a></li>
+        <li><a href="#">App development</a></li>
+        <li><a href="#">Marketing</a></li>
+        </ul>
+        </li>
+        
+        <li><a href="#">About us</a></li>
+        <li><a href="#">Contact us</a></li>
+        </ul>
+
+        <!-- start -->
+    <img src="image/csgo.jpg" alt="">
+    <br>
+   
+    <h1><span class="yellow">Users</pan></h1>
+        
+        <table class="container">
+            <thead>
+                <tr>
+                    <th><h1>ID</h1></th>
+                    <th><h1>NAME</h1></th>
+                    <th><h1>ADDRESS</h1></th>
+                    <th><h1>ACTION</h1></th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <% for(let i of data){%>
+                <tr>
+                    <td><%=i.id%></td>
+                    <td><%=i.Name%></td>
+                    
+                    <td><%=i.Address%></td>
+                    <td><a style="text-decoration: none; color: aqua;" href="detail/<%=i.id%>">Detail</a> 
+                        <a style="text-decoration: none; color: red;" href="#">Delete</a> 
+                        <a style="text-decoration: none; color: black;" href="#">Update</a> 
+                </tr>
+                <%}%>
+                
+            </tbody>
+        </table>
+</body>
+</html>
