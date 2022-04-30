@@ -1,61 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <title>User</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/style.css">
+  <title>User</title>
 </head>
+
 <body>
-    
-    <!-- nav bar  -->
-    <ul class="menu cf">
-        <li><a href="#" id="active">Home</a></li>
-        <li>
-                <a href="#">Services</a>
-                <ul class="submenu">
-        <li><a href="#">Web design</a></li>
-        <li><a href="#">Graphics design</a></li>
-        <li><a href="#">App development</a></li>
-        <li><a href="#">Marketing</a></li>
-        </ul>
-        </li>
-        
-        <li><a href="#">About us</a></li>
-        <li><a href="#">Contact us</a></li>
-        </ul>
 
-        <!-- start -->
-    <img src="image/csgo.jpg" alt="">
-    <br>
-   
-    <h1><span class="yellow">Users</pan></h1>
-        
-        <table class="container">
-            <thead>
-                <tr>
-                    <th><h1>ID</h1></th>
-                    <th><h1>NAME</h1></th>
-                    <th><h1>ADDRESS</h1></th>
-                    <th><h1>ACTION</h1></th>
+  <!-- nav bar  -->
+  <ul class="menu cf">
+    <li><a href="#" id="active">Home</a></li>
+    <li>
+      <a href="#">User</a>
+      <ul class="submenu">
+        <li><a href="/user/login">Login</a></li>
+        <li><a href="/user/register">Register</a></li>
+        <li><a href="/user/logout">Logout</a></li>
+        <li><a href="http://localhost:8080/api/testapi">Other server</a></li>
+       
+      </ul>
+    </li>
 
-                </tr>
-            </thead>
-            <tbody>
-                <% for(let i of data){%>
-                <tr>
-                    <td><%=i.id%></td>
-                    <td><%=i.Name%></td>
-                    
-                    <td><%=i.Address%></td>
-                    <td><a style="text-decoration: none; color: aqua;" href="detail/<%=i.id%>">Detail</a> 
-                        <a style="text-decoration: none; color: red;" href="#">Delete</a> 
-                        <a style="text-decoration: none; color: black;" href="#">Update</a> 
-                </tr>
-                <%}%>
-                
-            </tbody>
-        </table>
+    <li><a href="/service">Service</a></li>
+
+
+
+    <li><a href="/user/upload">Upload file</a></li>
+  </ul>
+
+  <!-- start -->
+  <img src="image/csgo.jpg" alt="">
+  <br>
+
+  <h1><span class="yellow"> Hello <%= user%></pan>
+  </h1>
+
+  <table class="container">
+    <thead>
+      <tr>
+        <th>
+          <h1>ID</h1>
+        </th>
+        <th>
+          <h1>NAME</h1>
+        </th>
+        <th>
+          <h1>ADDRESS</h1>
+        </th>
+        <th>
+          <h1>ACTION</h1>
+        </th>
+
+      </tr>
+    </thead>
+    <tbody>
+
+      <% for(let i of data){%>
+        <tr>
+          <td>
+            <%=i.id%>
+          </td>
+          <td>
+            <%=i.Name%>
+          </td>
+
+          <td>
+            <%=i.Address%>
+          </td>
+          <td><a style="text-decoration: none; color: aqua;" href="/user/detail/<%=i.id%>">Detail</a>
+            <form action="user/delete/<%=i.id%>" method="post">
+
+              <button type="submit">delete</button>
+            </form>
+            <a style="text-decoration: none; color: black;" href="/user/update/<%=i.id%>">Update</a>
+        </tr>
+        <%}%>
+
+    </tbody>
+  </table>
+  <form action="add" method="post">
+    <div class="form">
+      <div class="title">Add user</div>
+      <div class="subtitle">Let's create a new user!</div>
+      <div class="input-container ic1">
+        <input id="firstname" class="input" type="text" placeholder=" " name="name" />
+        <!-- <div class="cut"></div> -->
+        <label for="firstname" class="placeholder">Name</label>
+      </div>
+      <div class="input-container ic2">
+        <input id="lastname" class="input" type="text" placeholder=" " name="age" />
+        <!-- <div class="cut"></div> -->
+        <label for="lastname" class="placeholder">Age</label>
+      </div>
+      <div class="input-container ic2">
+        <input id="email" class="input" type="text" placeholder=" " name="phone" />
+        <!-- <div class="cut cut-short"></div> -->
+        <label for="email" class="placeholder">Phone</>
+      </div>
+      <div class="input-container ic2">
+        <input id="email" class="input" type="text" placeholder=" " name="addr" />
+        <!-- <div class="cut cut-short"></div> -->
+        <label for="email" class="placeholder">Address</>
+      </div>
+      <div class="input-container ic2">
+        <input id="email" class="input" type="text" placeholder=" " name="bio" />
+        <!-- <div class="cut cut-short"></div> -->
+        <label for="email" class="placeholder">Bio</>
+      </div>
+      <div class="input-container ic2">
+        <input id="email" class="input" type="text" placeholder=" " name="birth" />
+        <!-- <div class="cut cut-short"></div> -->
+        <label for="email" class="placeholder">Birthday</>
+      </div>
+      <button type="submit" class="submit">submit</button>
+    </div>
+  </form>
 </body>
+
 </html>

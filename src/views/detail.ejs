@@ -4,10 +4,32 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/user/css/card.css">
     <title>User detail</title>
 </head>
 <body>
-    Detail 
+    <div class="container">
+        <div class="cover-photo">
+          <img src="https://images.unsplash.com/photo-1565464027194-7957a2295fb7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80" class="profile">
+        </div>
+        
+        <div class="profile-name"><%=data.Name%></div>
+        <p class="about"><%=data.Age%></p>
+        <p class="about"><%=data.Bio%></p>
+        
+        <p class="about"><%=data.Birthday%></p>
+        <p class="about"><%=data.Phone%></p>
+        <p class="about"><%=data.Address%></p>
+        
+        <div>
+          <i class="fab fa-facebook-f"></i>
+          <i class="fab fa-instagram"></i>
+          <i class="fab fa-youtube"></i>
+          <i class="fab fa-twitter"></i>
+        </div>
+             <!-- <a style="text-decoration: none; color: black;" href="/user/update/<%=data.id%>">Update</a>  -->
+ 
+      </div>
+    
 </body>
 </html>

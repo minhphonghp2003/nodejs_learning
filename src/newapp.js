@@ -9,7 +9,7 @@ import { verify_user } from './middleware/passport.js'
 import local_str from 'passport-local'
 import passport from 'passport'
 const app = express()
-const port = process.env.PORT
+const port =3000 
 
 passport.use(new local_str(verify_user) )
 

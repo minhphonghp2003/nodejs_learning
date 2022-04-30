@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/user/css/upload.css">
+    <title>User detail</title>
+</head>
+<body>
+    <div class="frame">
+        <div class="center">
+            <div class="title">
+                
+                
+                <h1>Drop file to upload</h1>
+            </div>
+    <!--  --><form action="/user/upload" method="post" enctype="multipart/form-data">
+            <div class="dropzone">
+                
+                <img src="http://100dayscss.com/codepen/upload.svg" class="upload-icon" />
+                
+                <input type="file" class="upload-input" name="sin_file" />
+                
+           
+            </div>
+            <button type="submit" class="btn" >Upload single file</button>
+           </form> 
+           <form action="/user/mul_upload" method="post" enctype="multipart/form-data">
+           <div class="dropzone">
+               
+               <img src="http://100dayscss.com/codepen/upload.svg" class="upload-icon" />
+               
+               <input type="file" class="upload-input" name="mul_file" multiple />
+               
+          
+           </div>
+           <button type="submit" class="btn" name="uploadbutton">Upload multiple file</button>
+          </form> 
+    <!-- -->
+        </div>
+        
+    </div>
+
+    
+
+
+</body>
+</html>

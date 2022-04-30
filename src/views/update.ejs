@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>User detail</title>
+</head>
+<body>
+    <!-- <div class="container">
+        <div class="cover-photo">
+          <img src="https://images.unsplash.com/photo-1565464027194-7957a2295fb7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80" class="profile">
+        </div>
+        
+        <div class="profile-name"><%=data.Name%></div>
+        <p class="about"><%=data.Age%></p>
+        <p class="about"><%=data.Bio%></p>
+        
+        <p class="about"><%=data.Birthday%></p>
+        <p class="about"><%=data.Phone%></p>
+        <p class="about"><%=data.Address%></p>
+        
+        <div>
+          <i class="fab fa-facebook-f"></i>
+          <i class="fab fa-instagram"></i>
+          <i class="fab fa-youtube"></i>
+          <i class="fab fa-twitter"></i>
+        </div>
+      </div> -->
+     
+      <form action="/user/updatedone/<%=data.id%>" method="post">
+        <div class="form">
+            <div class="title">Update user</div>
+            <!-- <div class="subtitle">Let's create a new user!</div> -->
+            <div class="input-container ic1">
+              <input id="firstname" class="input" type="text" placeholder=" " value="<%=data.Name%>" name="name" />
+              <!-- <div class="cut"></div> -->
+              <label for="firstname" class="placeholder">Name</label>
+            </div>
+            <div class="input-container ic2">
+              <input id="lastname" class="input" type="text" placeholder=" " value="<%=data.Age%>" name="age" />
+              <!-- <div class="cut"></div> -->
+              <label for="lastname" class="placeholder">Age</label>
+            </div>
+            <div class="input-container ic2">
+              <input id="email" class="input" type="text" placeholder=" " value="<%=data.Phone%>" name="phone"/>
+              <!-- <div class="cut cut-short"></div> -->
+              <label for="email" class="placeholder">Phone</label>
+            </div>
+            <div class="input-container ic2">
+                <input id="email" class="input" type="text" placeholder=" " value="<%=data.Address%>" name="addr" />
+                <!-- <div class="cut cut-short"></div> -->
+                <label for="email" class="placeholder">Address</label>
+            </div>
+            <div class="input-container ic2">
+                <input id="email" class="input" type="text" placeholder=" " value="<%=data.Bio%>" name="bio"/>
+                <!-- <div class="cut cut-short"></div> -->
+                <label for="email" class="placeholder">Bio</label>
+            </div>
+              <div class="input-container ic2">
+                <input id="email" class="input" type="text" placeholder=" " value="<%=data.Birthday%>" name="birth"/>
+                <!-- <div class="cut cut-short"></div> -->
+                <label for="email" class="placeholder">Birthday</label>
+              </div>
+            <button type="submit" class="submit">submit</button>
+          </div>
+        </form>
+    
+</body>
+</html>
