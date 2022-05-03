@@ -2,13 +2,15 @@ import db from '../models/model.js'
 import multer from 'multer'
 import mysql2 from 'mysql2/promise'
 import jwt from 'jsonwebtoken'
+import fs from 'fs'
 const conn = mysql2.createPool({ host: 'localhost', user: 'root', database: 'nodejs' });
 // const pool =  conn.promise()
 const homeView = async (req, res) => {
     let tk = req.cookies.token
-    console.log(JSON.stringify( req.headers.cookie));
+    // console.log(JSON.stringify( req.headers.cookie));
 
-    jwt.verify(tk, 'minh', async (err, payload) => {
+    let pub_key = fs.readFileSync('jwtRS256.key.pem')
+    jwt.verify(tk, pub_key, async (err, payload) => {
         if (err) {
 
             let data = 'User'
@@ -35,10 +37,16 @@ const testView = (req, res) => {
     // return res.send("test")
 }
 const detailView = async (req, res) => {
-
+    try{
     const [rows, fields] = await conn.execute("select * from users where id = ? ", [req.params.id])
-
-    res.render("detail", { 'data': rows })
+    console.log(rows[0]);
+    res.status(200).json(rows[0])
+    }
+    // res.render("detail", { 'data': rows })
+    catch(err){
+        console.log(err);
+    }
+    
 
 }
 const addView = (req, res) => {
@@ -160,12 +168,14 @@ const serviceView = (req, res) => {
 }
 
 
+const chatView =(req,res)=>{
+    res.render('chat.ejs')
+}
 
 
 
 
 
 
-
-export default { serviceView, postregisterView, registerView, postloginView, getloginView, upload, uploadDone, homeView, detailView, addView, delUser, updateView, updateDone, testAPI, newAPI, testView, uploadWiew }
+export default {chatView, serviceView, postregisterView, registerView, postloginView, getloginView, upload, uploadDone, homeView, detailView, addView, delUser, updateView, updateDone, testAPI, newAPI, testView, uploadWiew }
 

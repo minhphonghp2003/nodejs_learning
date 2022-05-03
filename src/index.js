@@ -8,9 +8,17 @@ import cookieParser from 'cookie-parser'
 import { verify_user } from './middleware/passport.js'
 import local_str from 'passport-local'
 import passport from 'passport'
+import http from 'http'
+import {Server, Socket} from 'socket.io'
 const app = express()
 const port = process.env.PORT
-
+// io = io(http.Server(app))
+const host = http.createServer()
+const io = new Server(host)
+io.on('connection', client => {
+  client.on('event', data => { console.log('conn'); });
+  client.on('disconnect', () => {console.log('dis');});
+});
 passport.use(new local_str(verify_user) )
 
 

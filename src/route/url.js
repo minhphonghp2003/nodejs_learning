@@ -4,6 +4,7 @@ import passport from 'passport'
 import home from "../controller/homeCtrl.js";
 import jwt from '../middleware/jwtcheck.js'
 import cors from 'cors'
+import fs from 'fs'
 const router = express.Router()
 const webroute = (app) => {
 
@@ -11,7 +12,7 @@ const webroute = (app) => {
     router.get('/test', home.testView)
     router.post('/add', home.addView)
     router.get('/service', jwt.jwtcheck, home.serviceView)
-
+    router.get('/chat',home.chatView)
     return app.use('/', router)
 }
 const user = (app) => {
@@ -24,23 +25,7 @@ const user = (app) => {
     router.post('/delete/:userid', home.delUser)
     router.post('/updatedone/:id', home.updateDone)
     router.get('/login', home.getloginView)
-    router.post('/login',  (req, res, next) =>{
-        passport.authenticate('local', (err, user, info) => {
-        
-            if (err) { next(err) }
-            if (!user) {
-                next(info)
-            }
-            
-            
-            createtk.sign({ 'sub': user.username }, 'minh', { expiresIn: 30000 }, (err, data) => {
-                if(err){next(err)}
-                res.cookie('token', data, { httpOnly: true })
-                return res.redirect("/")
-            })
-
-        })(req, res, next)
-    })
+    router.post('/login', home.postloginView)
     router.get('/register', home.registerView)
     router.post('/register', home.postregisterView)
     router.get('/logout', (req, res) => {
@@ -54,6 +39,6 @@ const api = (app) => {
     router.post("/newapi", home.newAPI)
     router.put("/updateapi/:id", home.updateDone)
     router.delete("/deleteapi/:userid", home.delUser)
-    return app.use('/api', cors( {origin: '*'}),router)
+    return app.use('/api', cors({ origin: '*' }), router)
 }
 export { webroute, user, api }
